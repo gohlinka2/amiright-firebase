@@ -1,9 +1,9 @@
 import * as functions from "firebase-functions";
+import {newPostImpl} from "./post/newPostImpl";
+import {reactToPostImpl} from "./post/reactToPostImpl";
+import {initializeApp} from "firebase-admin/app";
 
-// // Start writing functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+initializeApp()
+
+export const newPost = functions.https.onCall(newPostImpl)
+export const reactToPost = functions.https.onCall(reactToPostImpl)
